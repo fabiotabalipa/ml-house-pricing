@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8"/>
+        <title>TCC Ciência de Dados - Fábio Tabalipa</title>
+
+        <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/static/style.css">
+    </head>
+    <body>
+        <div id="background">
+            {% if result %}
+                <div id="result-frame">
+                    <span id="result-price">
+                        {{ result }}
+                    </span>
+                    <span id="result-disclaimer">
+                        Esse resultado não representa um aconselhamento de investimento
+                    </span>
+                </div>
+            {% endif %}
+            <div id="content-frame">
+                <div id="header-frame">
+                    <img src="/static/logo.png" style="margin-bottom: 48px;"/>
+                    <p id="title" class="header-text">
+                        Predição de Preço de Imóveis
+                    </p>
+                    <p id="author" class="header-text">
+                        Fábio de Oliveira Tabalipa
+                    </p>
+                    <p id="description" class="header-text">
+                        Trabalho de Conclusão de Curso apresentado ao Curso de Especialização em Ciência de Dados e Big Data
+                    </p>
+                </div>
+                <div id="form-frame">
+                    <form action="{{ url_for('main') }}" method="POST">
+                        <label>
+                            Tipo do imóvel
+                            <select name="type" class="form-element-box">
+                                <option value="Apartamento">Apartamento</option>
+                                <option value="Cobertura">Cobertura</option>
+                                <option value="Casa">Casa</option>
+                                <option value="Casa de Condomínio">Casa de Condomínio</option>
+                            </select>
+                        </label>
+                        <label>
+                            Bairro em Florianópolis-SC
+                            <select name="neighborhood" class="form-element-box">
+                                <option value="Abraão">Abraão</option>
+                                <option value="Agronômica">Agronômica</option>
+                                <option value="Alto_Ribeirão">Alto Ribeirão</option>
+                                <option value="Autódromo">Autódromo</option>
+                                <option value="Barra_da_Lagoa">Barra da Lagoa</option>
+                                <option value="Barreiros">Barreiros</option>
+                                <option value="Beira_Mar_Norte">Beira Mar Norte</option>
+                                <option value="Bom_Abrigo">Bom Abrigo</option>
+                                <option value="Cachoeira_do_Bom_Jesus">Cachoeira do Bom Jesus</option>
+                                <option value="Cacupé">Cacupé</option>
+                                <option value="Caiacanga">Caiacanga</option>
+                                <option value="Campeche">Campeche</option>
+                                <option value="Campinas">Campinas</option>
+                                <option value="Canajurê">Canajurê</option>
+                                <option value="Canasvieiras">Canasvieiras</option>
+                                <option value="Canto">Canto</option>
+                                <option value="Canto_da_Lagoa">Canto da Lagoa</option>
+                                <option value="Canto_dos_Araçás">Canto dos Araçás</option>
+                                <option value="Capoeiras">Capoeiras</option>
+                                <option value="Carianos">Carianos</option>
+                                <option value="Carvoeira">Carvoeira</option>
+                                <option value="Centro">Centro</option>
+                                <option value="Coloninha">Coloninha</option>
+                                <option value="Coqueiros">Coqueiros</option>
+                                <option value="Costa_da_Lagoa">Costa_da_Lagoa</option>
+                                <option value="Costeira_Do_Ribeirao_Da_Ilha">Costeira Do Ribeirao Da Ilha</option>
+                                <option value="Costeira_do_Pirajubaé">Costeira do Pirajubaé</option>
+                                <option value="Costeira_do_Ribeirão">Costeira do Ribeirão</option>
+                                <option value="Córrego_Grande">Córrego Grande</option>
+                                <option value="Daniela">Daniela</option>
+                                <option value="Estreito">Estreito</option>
+                                <option value="Ingleses">Ingleses</option>
+                                <option value="Ingleses_do_Rio_Vermelho">Ingleses do Rio Vermelho</option>
+                                <option value="Itacorubi">Itacorubi</option>
+                                <option value="Itaguaçu">Itaguaçu</option>
+                                <option value="Jardim_Anchieta">Jardim Anchieta</option>
+                                <option value="Jardim_Atlântico">Jardim Atlântico</option>
+                                <option value="José_Mendes">José Mendes</option>
+                                <option value="João_Paulo">João Paulo</option>
+                                <option value="Jurerê">Jurerê</option>
+                                <option value="Jurerê_Internacional">Jurerê Internacional</option>
+                                <option value="Lagoa_Pequena">Lagoa Pequena</option>
+                                <option value="Lagoa_da_Conceição">Lagoa da Conceição</option>
+                                <option value="Lagoinha">Lagoinha</option>
+                                <option value="Moenda">Moenda</option>
+                                <option value="Monte_Cristo">Monte Cristo</option>
+                                <option value="Monte_Verde">Monte Verde</option>
+                                <option value="Morro_da_Cruz">Morro da Cruz</option>
+                                <option value="Morro_das_Pedras">Morro das Pedras</option>
+                                <option value="Muquém">Muquém</option>
+                                <option value="Pantanal">Pantanal</option>
+                                <option value="Parque_São_Jorge">Parque São Jorge</option>
+                                <option value="Pedrita">Pedrita</option>
+                                <option value="Ponta_das_Canas">Ponta das Canas</option>
+                                <option value="Porto_da_Lagoa">Porto da Lagoa</option>
+                                <option value="Praia_Brava">Praia Brava</option>
+                                <option value="Praia_Mole">Praia Mole</option>
+                                <option value="Praia_da_Lagoinha">Praia da Lagoinha</option>
+                                <option value="Praia_dos_Açores">Praia dos Açores</option>
+                                <option value="Pântano_do_Sul">Pântano do Sul</option>
+                                <option value="Ratones">Ratones</option>
+                                <option value="Ribeirão_da_Ilha">Ribeirão da Ilha</option>
+                                <option value="Rio_Tavares">Rio Tavares</option>
+                                <option value="Saco_Grande">Saco Grande</option>
+                                <option value="Saco_dos_Limões">Saco dos Limões</option>
+                                <option value="Sambaqui">Sambaqui</option>
+                                <option value="Santa_Mônica">Santa Mônica</option>
+                                <option value="Santinho">Santinho</option>
+                                <option value="Santo_Antônio_de_Lisboa">Santo Antônio de Lisboa</option>
+                                <option value="Serrinha">Serrinha</option>
+                                <option value="São_João_do_Rio_Vermelho">São João do Rio Vermelho</option>
+                                <option value="Tapera">Tapera</option>
+                                <option value="Trindade">Trindade</option>
+                                <option value="Vargem_Grande">Vargem Grande</option>
+                                <option value="Vargem_Pequena">Vargem Pequena</option>
+                                <option value="Vargem_do_Bom_Jesus">Vargem do Bom Jesus</option>
+                            </select>
+                        </label>
+                        <label>
+                            Área (m²)
+                            <input name="area" class="form-element-box" type="text" />
+                        </label>
+                        <label>
+                            Número de quartos
+                            <select name="bedrooms" class="form-element-box">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </label>
+                        <label>
+                            Número de banheiros
+                            <select name="bathrooms" class="form-element-box">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </label>
+                        <label>
+                            Vagas de garagem
+                            <select name="parking_spaces" class="form-element-box">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </label>
+                        <input id="form-button" type="submit" value="Consultar">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
