@@ -30,4 +30,8 @@ flask run
 
 ---
 
+> Sugestões da banca: 1) Utilizar GridSearchCV para ajuste de hiperparâmetros; 2) Testar séries temporais.
+
+---
+
 **Autor**: Fábio de Oliveira Tabalipa
